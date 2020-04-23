@@ -12,15 +12,37 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
   <script src="https://rawgit.com/onsip/SIP.js/0.8.0/dist/sip-0.8.0.js"></script>
+
+  <!-- <script src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script> -->
+
   <script src="code/code.js"></script>
 
 </head>
 
 <body>
 
+  <div class="container" style="margin-top: 50px; display: none;" id="loading-body">
+
+    <center>
+
+      <div class="jumbotron">
+        <h1 class="display-3">Meeting app</h1>
+        <p class="lead">A simple application for secure p2p based meetings</p>
+        <span class="badge badge-primary" style="float: right;">Demo</span>
+        <hr class="my-4">
+      </div>
+
+      <img src="assets/loading.gif">
+      <h4>Waiting for a call...</h4>
+
+    </center>
+
+  </div>
+
   <!-- container open -->
-  <div class="container" style="margin-top: 50px;">
+  <div class="container" style="margin-top: 50px;" id="main-container">
 
     <!-- section 1 -->
     <div class="row" id="index-header">
@@ -29,7 +51,7 @@
         <center>
 
           <h1 class="display-3">Meeting app</h1>
-          <p class="lead">A simple meeting application for P2P based video calls</p>
+          <p class="lead">A simple application for secure p2p based meetings</p>
 
           <span class="badge badge-primary" style="float: right;">Demo</span>
 
@@ -47,7 +69,7 @@
                   </div>
                   <input type="text" class="form-control" id="username" placeholder="Enter your username"
                     style="width: 100%;" aria-describedby="basic-addon1">
-                    
+
                 </div>
 
                 <div class="alert alert-dismissible alert-primary">
@@ -72,9 +94,10 @@
             <strong>Please fill both fields!</strong>
           </div>
 
-          <button type="button" class="btn btn-success btn-lg" onclick="createRoom()"><i class="fa fa-video-camera"></i>
+          <button type="button" class="btn btn-rounded btn-success btn-lg" onclick="createRoom()"><i
+              class="fa fa-video-camera"></i>
             Call someone</button>
-          <button type="button" class="btn btn-danger btn-lg" onclick="createUAandRecieveCall()"><i
+          <button type="button" class="btn btn-rounded btn-danger btn-lg" onclick="createUAandRecieveCall()"><i
               class="fa fa-spinner"></i> Wait for a call</button>
 
         </center>
@@ -106,13 +129,13 @@
           <center>
             <div class="jumbotron">
               <h1 class="display-3">Meeting app</h1>
-              <p class="lead">A simple meeting application for P2P based video calls</p>
+              <p class="lead">A simple application for secure p2p based meetings</p>
 
               <span class="badge badge-primary" style="float: right;">Demo</span>
 
 
               <hr class="my-4">
-
+              
             </div>
             <br>
             <div>
@@ -131,10 +154,11 @@
 
                 <div class="alert alert-dismissible alert-success">
                   <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <strong>Ask participant for their username and give them your session key if you are the host!</strong>
+                  <strong>Ask participant for their username and give them your session key if you are the
+                    host!</strong>
                 </div>
 
-                  <div class="alert alert-dismissible alert-danger">
+                <div class="alert alert-dismissible alert-danger">
                   <button type="button" class="close" data-dismiss="alert">&times;</button>
                   <strong>Make sure that the user you are calling is already in "wait for a call" room!</strong>
                 </div>
@@ -149,7 +173,8 @@
                 </div>
 
             </form>
-            <button onclick="addParticipant()" type="button" class="btn btn-success btn-lg">Send Call</button>
+            <button onclick="addParticipant()" type="button" class="btn btn-rounded btn-success btn-lg">Send
+              Call</button>
           </div>
         </div>
       </div>
@@ -157,55 +182,80 @@
       <!-- main video body -->
       <div class="row container" id="main-video-body" style="display: none;">
 
-        <div class="alert alert-dismissible alert-primary"  id="waiting-call" style="display: none;">
+        <div class="alert alert-dismissible alert-primary" id="waiting-call" style="display: none;">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>Waiting for call...</strong>
         </div>
 
-        <div class="alert alert-dismissible alert-primary" id= "incoming-call-body" style="display: none;">
+        <div class="alert alert-dismissible alert-primary" id="incoming-call-body" style="display: none;">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>Incoming video call request! Allow video and audio permission to accept call.</strong>
         </div>
-        
-        
-        <div class="alert alert-dismissible alert-danger" id= "call-disconnected-body" style="display: none;">
+
+
+        <div class="alert alert-dismissible alert-danger" id="call-disconnected-body" style="display: none;">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <p>Either user was not online...</p>
           <strong>Call unsuccessfull! Please create a new session key and call again</strong>
         </div>
 
-        
 
-        <div class="alert alert-dismissible alert-info" id= "call-during-connected-body" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>          
-          <strong>Please wait, Trying to connect ...</strong>
+
+        <div id="call-during-connected-body" style="display: none;">
+          <center>
+            <img src="assets/loading.gif">
+            <h4>Connecting...</h4>
+
+          </center>
+
         </div>
 
-        <div class="alert alert-dismissible alert-success" id= "call-connected-body" style="display: none;">
+        <div class="alert alert-dismissible alert-success" id="call-connected-body" style="display: none;">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>Call connected succesfully! Click on "Start Video Chatting" button below to start video</strong>
         </div>
 
-        <div class="alert alert-dismissible alert-danger" id= "call-terminated-body" style="display: none;">
+        <div class="alert alert-dismissible alert-danger" id="call-terminated-body" style="display: none;">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          
+
           <p>Either network issue or other user refreshed or left the page</p>
-          <strong>Call terminated! Please create a new session key and call again</strong>
+          <strong>Call terminated! Please create a new session key or contact host</strong>
         </div>
 
-        <button style="display:none" id="start-video-call-body" onclick="startVideoCall()" type="button"
-        class="btn btn-lg btn-primary"><i class="fa fa-video-camera"></i> Start Video Chatting</button>
+        <hr>
 
+        <div style="display:none" id="start-video-call-body">
 
-      <button style="display:none" id="start-video-call-body-recieve" onclick="startVideoCallRecieve()" type="button"
-        class="btn btn-lg btn-primary"><i class="fa fa-video-camera"></i> Start Video Chatting</button>
-        
+          <button onclick="startVideoCall()" type="button" class="btn btn-rounded btn-lg btn-primary"><i
+              class="fa fa-video-camera"></i> Start Video Chatting
+
+          </button>
+
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <div style="display:none" id="start-video-call-body-recieve">
+          <button onclick="startVideoCallRecieve()" type="button" class="btn btn-rounded btn-lg btn-primary"><i
+              class="fa fa-video-camera"></i> Start Video Chatting
+          </button>
+
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+
+        <hr>
+
         <div class="row">
           <div class="col-sm" style="margin-top: 10px;">
             <center>
 
-              <button onclick="goHome()" type="button" class="btn btn-success"><i class="fa fa-home"></i> Home</button>
-              <button onclick="endcall()" type="button" class="btn btn-danger"><i class="fa fa-circle"></i> End
+              <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
+                Home</button>
+              <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i class="fa fa-circle"></i>
+                End
                 Call</button>
               <br>
               <br>

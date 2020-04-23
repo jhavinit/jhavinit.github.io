@@ -8,6 +8,7 @@ var remoteVideo;
 var localVideo;
 var session;
 var session1;
+// var designer;
 
 // create room
 function createRoom() {
@@ -82,9 +83,42 @@ function addParticipant() {
         document.getElementById("call-disconnected-body").style.display = "block";
     });
     session.on('accepted', function (data) {
+        
+        document.getElementById("call-during-connected-body").style.display = "none";
+
         document.getElementById("call-connected-body").style.display = "block";
 
         document.getElementById("start-video-call-body").style.display = "block";
+
+        // designer = new CanvasDesigner();
+
+
+        // userAgent.on('message', function(event){                                    // recieving msgs from bob
+        //     alert('messg recieved');
+        //     designer.syncData(JSON.parse(event.data));
+        // });
+
+
+        // designer.addSyncListener(function (data) {
+        //     alert('messg sent');
+        //     userAgent.message(participantNewUser.uri, JSON.stringify(data));
+        // });
+
+        // designer.setSelected('pencil');
+
+        // designer.setTools({
+        //     pencil: true,
+        //     text: true
+        // });
+
+
+        // designer.widgetHtmlURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.html'; // you can place this file anywhere
+        // designer.widgetJsURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.js';     // you can place this file anywhere
+
+
+        // designer.appendTo(document.body || document.documentElement);
+
+
     });
     session.on('terminated', function (message, cause) {
         document.getElementById("call-terminated-body").style.display = "block";
@@ -117,10 +151,17 @@ function startVideoCallRecieve() {
     });
     localVideo.srcObject = localStream;
     localVideo.play();
+
+
 }
 
 // recieve call
 function createUAandRecieveCall() {
+    
+    // start loading
+
+    document.getElementById("main-container").style.display = "none";
+    document.getElementById("loading-body").style.display = "block";
 
     username = document.getElementById("username").value;
     password = document.getElementById("password").value;
@@ -155,6 +196,9 @@ function createUAandRecieveCall() {
 
 
     userAgent.on('invite', function (session) {
+        
+        document.getElementById("main-container").style.display = "block";
+        document.getElementById("loading-body").style.display = "none";
 
         document.getElementById("incoming-call-body").style.display = "block";
 
@@ -169,8 +213,37 @@ function createUAandRecieveCall() {
             document.getElementById("call-disconnected-body").style.display = "block";
         });
         session1.on('accepted', function (data) {
+            document.getElementById("call-during-connected-body").style.display = "none";
             document.getElementById("call-connected-body").style.display = "block";
             document.getElementById("start-video-call-body-recieve").style.display = "block";
+
+
+            // designer = new CanvasDesigner();
+
+            // userAgent.on('message', function(event){                                    // recieving msgs from bob
+            //     alert('messg recieved');
+            //     designer.syncData(JSON.parse(event.data));
+            // });    
+    
+            // designer.addSyncListener(function (data) {
+            //     alert('messg sent');
+            //     userAgent.message(participantNewUser.uri, JSON.stringify(data));
+            // });
+    
+
+            // designer.setSelected('pencil');
+
+            // designer.setTools({
+            //     pencil: true,
+            //     text: true
+            // });
+
+            // designer.widgetHtmlURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.html'; // you can place this file anywhere
+            // designer.widgetJsURL = 'https://www.webrtc-experiment.com/Canvas-Designer/widget.js';     // you can place this file anywhere
+
+
+            // designer.appendTo(document.body || document.documentElement);
+
         });
         session1.on('terminated', function (message, cause) {
             document.getElementById("call-terminated-body").style.display = "block";
