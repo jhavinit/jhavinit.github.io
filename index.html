@@ -179,50 +179,48 @@
         </div>
       </div>
 
+      <div class="alert alert-dismissible alert-primary" id="waiting-call" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Waiting for call...</strong>
+      </div>
+
+      <div class="alert alert-dismissible alert-primary" id="incoming-call-body" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Incoming video call request! Allow video and audio permission to accept call.</strong>
+      </div>
+
+
+      <div class="alert alert-dismissible alert-danger" id="call-disconnected-body" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p>Either user was not online...</p>
+        <strong>Call unsuccessfull! Please create a new session key and call again</strong>
+      </div>
+
+
+
+      <div id="call-during-connected-body" style="display: none;">
+        <center>
+          <img src="assets/loading.gif">
+          <h4>Connecting...</h4>
+
+        </center>
+
+      </div>
+
+      <div class="alert alert-dismissible alert-success" id="call-connected-body" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Call connected succesfully! Click on "Start Video Chatting" button below to start video</strong>
+      </div>
+
+      <div class="alert alert-dismissible alert-danger" id="call-terminated-body" style="display: none;">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+        <p>Either network issue or other user refreshed or left the page</p>
+        <strong>Call terminated! Please create a new session key or contact host</strong>
+      </div>
+
       <!-- main video body -->
       <div class="row container" id="main-video-body" style="display: none;">
-
-        <div class="alert alert-dismissible alert-primary" id="waiting-call" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>Waiting for call...</strong>
-        </div>
-
-        <div class="alert alert-dismissible alert-primary" id="incoming-call-body" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>Incoming video call request! Allow video and audio permission to accept call.</strong>
-        </div>
-
-
-        <div class="alert alert-dismissible alert-danger" id="call-disconnected-body" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <p>Either user was not online...</p>
-          <strong>Call unsuccessfull! Please create a new session key and call again</strong>
-        </div>
-
-
-
-        <div id="call-during-connected-body" style="display: none;">
-          <center>
-            <img src="assets/loading.gif">
-            <h4>Connecting...</h4>
-
-          </center>
-
-        </div>
-
-        <div class="alert alert-dismissible alert-success" id="call-connected-body" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>Call connected succesfully! Click on "Start Video Chatting" button below to start video</strong>
-        </div>
-
-        <div class="alert alert-dismissible alert-danger" id="call-terminated-body" style="display: none;">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-
-          <p>Either network issue or other user refreshed or left the page</p>
-          <strong>Call terminated! Please create a new session key or contact host</strong>
-        </div>
-
-        <hr>
 
         <div style="display:none" id="start-video-call-body">
 
@@ -234,20 +232,7 @@
           <div class="spinner-grow text-success" role="status">
             <span class="sr-only">Loading...</span>
           </div>
-        </div>
-
-        <div style="display:none" id="start-video-call-body-recieve">
-          <button onclick="startVideoCallRecieve()" type="button" class="btn btn-rounded btn-lg btn-primary"><i
-              class="fa fa-video-camera"></i> Start Video Chatting
-          </button>
-
-          <div class="spinner-grow text-success" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-
-        <hr>
-
+          
         <div class="row">
           <div class="col-sm" style="margin-top: 10px;">
             <center>
@@ -261,6 +246,35 @@
               <br>
             </center>
           </div>
+        </div>
+        
+        </div>
+
+        <div style="display:none" id="start-video-call-body-recieve">
+          <button onclick="startVideoCallRecieve()" type="button" class="btn btn-rounded btn-lg btn-primary"><i
+              class="fa fa-video-camera"></i> Start Video Chatting
+          </button>
+
+          <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+
+          
+        <div class="row">
+          <div class="col-sm" style="margin-top: 10px;">
+            <center>
+
+              <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
+                Home</button>
+              <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i class="fa fa-circle"></i>
+                End
+                Call</button>
+              <br>
+              <br>
+            </center>
+          </div>
+        </div>
+
         </div>
 
         <div class="row">

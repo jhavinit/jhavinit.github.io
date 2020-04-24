@@ -80,6 +80,7 @@ function addParticipant() {
     session.on('failed', function (response, cause) {
         document.getElementById("start-video-call-body").style.display = "none";
         document.getElementById("main-video-body").style.display = "none";
+        document.getElementById("call-during-connected-body").style.display = "none";
         document.getElementById("call-disconnected-body").style.display = "block";
     });
     session.on('accepted', function (data) {
@@ -121,6 +122,9 @@ function addParticipant() {
 
     });
     session.on('terminated', function (message, cause) {
+        document.getElementById("start-video-call-body").style.display = "none";
+        document.getElementById("main-video-body").style.display = "none";
+        document.getElementById("call-during-connected-body").style.display = "none";
         document.getElementById("call-terminated-body").style.display = "block";
     });
 
@@ -210,6 +214,7 @@ function createUAandRecieveCall() {
         session1.on('failed', function (response, cause) {
             document.getElementById("start-video-call-body-recieve").style.display = "none";
             document.getElementById("main-video-body").style.display = "none";
+        document.getElementById("call-during-connected-body").style.display = "none";
             document.getElementById("call-disconnected-body").style.display = "block";
         });
         session1.on('accepted', function (data) {
@@ -246,6 +251,10 @@ function createUAandRecieveCall() {
 
         });
         session1.on('terminated', function (message, cause) {
+            document.getElementById("start-video-call-body-recieve").style.display = "none";
+            document.getElementById("main-video-body").style.display = "none";
+        document.getElementById("call-during-connected-body").style.display = "none";
+
             document.getElementById("call-terminated-body").style.display = "block";
         });
 
