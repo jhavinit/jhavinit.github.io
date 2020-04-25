@@ -12,17 +12,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
   <script src="https://rawgit.com/onsip/SIP.js/0.8.0/dist/sip-0.8.0.js"></script>
-
-  <!-- <script src="https://www.webrtc-experiment.com/Canvas-Designer/canvas-designer-widget.js"></script> -->
-
   <script src="code/code.js"></script>
 
 </head>
 
 <body>
-  
+
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="breadcrumb-item"><a href="#">Simple Call</a></li>
@@ -35,8 +31,9 @@
       <div class="jumbotron">
         <h1 class="display-3">Simple call</h1>
         <p class="lead">A simple application for secure p2p based meetings</p>
-        <span class="badge badge-primary" style="float: right;">Demo</span>
+        <span class="badge badge-primary" style="float: right;">demo</span>
         <hr class="my-4">
+
       </div>
 
       <img src="assets/loading.gif">
@@ -48,7 +45,7 @@
 
   <!-- container open -->
   <div class="container" style="margin-top: 50px;" id="main-container">
-    
+
     <!-- section 1 -->
     <div class="row" id="index-header">
       <div class="col-sm jumbotron">
@@ -58,7 +55,7 @@
           <h1 class="display-3">Simple call</h1>
           <p class="lead">A simple application for secure p2p based meetings</p>
 
-          <span class="badge badge-primary" style="float: right;">Demo</span>
+          <span class="badge badge-primary" style="float: right;">demo</span>
 
 
           <hr class="my-4">
@@ -136,11 +133,11 @@
               <h1 class="display-3">Simple call</h1>
               <p class="lead">A simple application for secure p2p based meetings</p>
 
-              <span class="badge badge-primary" style="float: right;">Demo</span>
+              <span class="badge badge-primary" style="float: right;">demo</span>
 
 
               <hr class="my-4">
-              
+
             </div>
             <br>
             <div>
@@ -237,22 +234,23 @@
           <div class="spinner-grow text-success" role="status">
             <span class="sr-only">Loading...</span>
           </div>
-          
-        <div class="row">
-          <div class="col-sm" style="margin-top: 10px;">
-            <center>
 
-              <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
-                Home</button>
-              <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i class="fa fa-circle"></i>
-                End
-                Call</button>
-              <br>
-              <br>
-            </center>
+          <div class="row">
+            <div class="col-sm" style="margin-top: 10px;">
+              <center>
+
+                <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
+                  Home</button>
+                <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i
+                    class="fa fa-circle"></i>
+                  End
+                  Call</button>
+                <br>
+                <br>
+              </center>
+            </div>
           </div>
-        </div>
-        
+
         </div>
 
         <div style="display:none" id="start-video-call-body-recieve">
@@ -264,21 +262,22 @@
             <span class="sr-only">Loading...</span>
           </div>
 
-          
-        <div class="row">
-          <div class="col-sm" style="margin-top: 10px;">
-            <center>
 
-              <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
-                Home</button>
-              <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i class="fa fa-circle"></i>
-                End
-                Call</button>
-              <br>
-              <br>
-            </center>
+          <div class="row">
+            <div class="col-sm" style="margin-top: 10px;">
+              <center>
+
+                <button onclick="goHome()" type="button" class="btn btn-rounded btn-success"><i class="fa fa-home"></i>
+                  Home</button>
+                <button onclick="endcall()" type="button" class="btn btn-rounded btn-danger"><i
+                    class="fa fa-circle"></i>
+                  End
+                  Call</button>
+                <br>
+                <br>
+              </center>
+            </div>
           </div>
-        </div>
 
         </div>
 
@@ -286,10 +285,10 @@
           <div class="card card-body col-md-3 shadow-lg p-3 mb-5 bg-white rounded">
             <video id="remoteVideo" controls></video>
           </div>
-  
+
           <div class="card card-body col-md-9 shadow-lg p-3 mb-5 bg-white rounded">
             <video id="localVideo" muted="muted" controls></video>
-          </div>  
+          </div>
         </div>
 
       </div>
@@ -301,13 +300,16 @@
     <!-- Footer -->
     <footer class="page-footer font-small blue pt-4">
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="#"> VINIT NARAYAN JHA</a>
+      <div class="footer-copyright text-center py-3"> <a href="https://github.com/jhavinit/jhavinit.github.io"><i
+            class="fa fa-github"></i></a>
+
+        <a href="https://www.linkedin.com/in/vinit-narayan-jha-07/"> VINIT NARAYAN JHA </a>
       </div>
       <!-- Copyright -->
 
     </footer>
     <!-- Footer -->
+
 
   </div>
   <!-- container close -->

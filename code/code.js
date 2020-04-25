@@ -11,6 +11,7 @@ var session1;
 var connectedUsers = [];
 var unknown_user_counter = 0;
 
+
 // create room
 function createRoom() {
 

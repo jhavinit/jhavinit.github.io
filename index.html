@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Meeting app - by Vinit Jha</title>
@@ -11,28 +12,194 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+
+    function showInstruction() {
+
+      document.getElementById("instruction-body").style.display = "block";
+      document.getElementById("main-container").style.display = "none";
+      document.getElementById("how_to_show_btn").style.display = "none";
+
+
+    }
+
+  </script>
 </head>
 
 <body>
 
-<div class="container" style="margin-top: 50px;" id="main-container">
+  <div style="display:none" id="instruction-body">
+
+    <div class="jumbotron">
+      <center>
+        <h1 class="display-3">Meeting app</h1>
+        <p class="lead">A simple application for secure p2p based meetings</p>
+        <span class="badge badge-primary" style="float: right;">demo</span>
+        <hr class="my-4">
+      </center>
+
+      <div class="alert alert-dismissible alert-primary">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Never refresh the page after being connected!</strong>
+      </div>
+
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Always allow video and audio permissions ; asked as many times!</strong>
+      </div>
+
+      <hr class="my-4">
+
+
+      <h4>Instructions for "Simple Call"</h4>
+      <hr class="my-4">
+
+      <small>Step 1</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+      </div>
+      <p class="table-danger">One of the two person has to first go to <a href="simpleChat.html">"Simple Call"</a>, then
+        choose whatever username you want and whatever password you want, but remember the password and click on "Call
+        someone". You
+        will be taken to a add participant page. wait there till 2nd user does step #2.
+      </p>
+
+      <small>Step 2</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+      </div>
+      <p class="table-success">The other person will go to <a href="simpleChat.html">"Simple Call"</a> and fill in
+        whatever
+        username but use the same password
+        as the first guy used (first person has to share this with other).<br>
+        After that the second guy has to share only his username with 1st guy. Now click "Wait for a call". You will be
+        taken to a waiting area. Wait there till 1st person call you.
+      </p>
+
+      <small>Step 3</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
+      </div>
+      <p class="table-primary">
+        Now 1st person has to add a participant by filling the username of person he/she wanna call (the username
+        provided by 2nd guy to you in step #2).
+        Then click "Add participant" and allow all permissions for audio and video.
+      </p>
+
+      <small>Step 4</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
+      </div>
+      <p class="table-info">
+        Both participants will be presented with series of log messages of connection. Click "Start video call".
+      </p>
+
+      <small>Step 5</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
+      <p class="table-warning">
+        Enjoy!<br>
+        Make sure not to refresh the page.
+      </p>
+
+      <p class="lead">
+        <a class="btn btn-primary" href="index.html" role="button">I got it!</a>
+      </p>
+
+      <hr class="my-4">
+
+      <h4>Instructions for "Group Call"</h4>
+      <hr class="my-4">
+
+      <small>Step 1</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+      </div>
+      <p class="table-danger">One of the person (the host) has to first go to <a href="groupChat.html">"Group Call"</a>,
+        then
+        choose whatever username you want and whatever password you want, but remember the password and click on "Call
+        someone". You
+        will be taken to a add participant page. wait there till all other participants do step #2.
+      </p>
+
+      <small>Step 2</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+      </div>
+      <p class="table-success">All other participants will go to <a href="groupChat.html">"Group Call"</a> and fill in
+        whatever
+        username but use the same password
+        as the first guy (the host) used (first person (the host) has to share this with others).<br>
+        After that all other guys have to share only their username with 1st guy (the host). Now click "Wait for a
+        call". You will be
+        taken to a waiting area. Wait there till 1st person / host calls you.
+      </p>
+
+      <small>Step 3</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
+      </div>
+      <p class="table-primary">
+        Now 1st person (the host) has to add a participant by filling the username of person he/she wanna call (the
+        username
+        provided by all others to you in step #2).
+        Then click "Add participant" and allow all permissions for audio and video.
+      </p>
+
+      <small>Step 4</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 85%"></div>
+      </div>
+      <p class="table-info">
+        After call is connected between any two (the host and other guy) then the host can add more participants from
+        "Add participant" button
+      </p>
+
+      <small>Step 5</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
+      <p class="table-warning">
+        Enjoy!<br>
+        Make sure not to refresh the page.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <button id="how_to_show_btn" type="button" class="btn btn-primary" onclick="showInstruction()">How to use <i
+      class="fa fa-question-circle"></i> </button>
+
+  <div class="container" style="margin-top: 50px;" id="main-container">
 
     <div class="row">
       <div class="col-sm jumbotron">
-        
+
         <center>
           <h1 class="display-3">Meeting app</h1>
           <p class="lead">A simple application for secure p2p based meetings</p>
-          <span class="badge badge-primary" style="float: right;">Demo</span>
+          <span class="badge badge-primary" style="float: right;">demo</span>
           <hr class="my-4">
 
-          <a type="button" href="simpleChat.html" class="btn btn-rounded btn-primary btn-lg"><i
-              class="fa fa-user"></i>
+          <a type="button" href="simpleChat.html" class="btn btn-rounded btn-success btn-lg"><i class="fa fa-user"></i>
             Simple Call</a>
-            
-          <a type="button" href="groupChat.html" class="btn btn-rounded btn-success btn-lg"><i
-            class="fa fa-users"></i>
-          Group Call</a>
+
+          <a type="button" href="groupChat.html" class="btn btn-rounded btn-danger btn-lg"><i class="fa fa-users"></i>
+            Group Call</a>
 
         </center>
 
@@ -40,12 +207,29 @@
 
       <div class="col-sm">
         <div class="text-center">
-          <img src="assets/undraw_social_dashboard_k3pt.png" style="width:500px;height:400px;" class="rounded" alt="...">
+          <img src="assets/undraw_social_dashboard_k3pt.png" style="width:500px;height:400px;" class="rounded"
+            alt="...">
         </div>
       </div>
 
     </div>
-</div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3"> <a href="https://github.com/jhavinit/jhavinit.github.io"><i
+            class="fa fa-github"></i></a>
+
+        <a href="https://www.linkedin.com/in/vinit-narayan-jha-07/"> VINIT NARAYAN JHA </a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+
+  </div>
 
 </body>
+
 </html>
