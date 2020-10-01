@@ -1,4 +1,5 @@
 let sip_server = '@sipjs.onsip.com';
+let astreisk_server = '@asteriskserver.opsip.com';
 let randomCode = undefined;
 let username;
 let password;
